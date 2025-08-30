@@ -18,3 +18,6 @@ flask/
 │── uploads/ # Uploaded files
 │── app.py # Main Flask app
 │── requirements.txt
+
+## How to use
+usage steps → git clone, pip install -r requirements.txt, python app.py
