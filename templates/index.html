@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Text Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+     
+    <div class="container">
+        <h1>Resume Text Extractor</h1>
+         <form method="POST" enctype="multipart/form-data">
+            <label for="file" >Upload a Resume(PDF or DOCX):</label>
+             <input type="file" name="file" id="file" accept=".pdf, .docx">
+             <label for="job_description" >Job Description</label>
+             
+             <textarea name="job_description" rows="5" cols="50" placeholder="Enter Job Description here...eg python, c++...."></textarea>
+
+             <input type="submit" value="Analyze">
+         </form>
+         {% if error %}
+             <p class="error">{{error}}</p>
+         {% endif %}
+
+         {%if extracted_text%}
+              <div class="extracted-text-section">
+                <h2>Extracted Text</h2>
+                <pre>{{extracted_text}}</pre>
+
+              </div>
+        {% endif %}
+       
+
+        {% if analysis_results %}
+            <h2>Analysis Result</h2>
+            <p>Match Score : {{ (analysis_results.match_score * 100) | round(2) }}%</p>
+
+            <h3>Matched Skills</h3>
+            <ul>
+                {% for skill in analysis_results.matched_skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Missing Skills</h3>
+            <ul>
+                {% for skill in analysis_results.missing_skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
