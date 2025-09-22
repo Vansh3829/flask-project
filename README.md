@@ -1,5 +1,5 @@
 # flask-project
-A simple Flask web app that allows users to upload and manage files securely with a clean, responsive UI. Built using Flask, HTML, and CSS, with organized project structure and deployment-ready requirements.txt
+A simple Flask web app that allows users to upload Resume(.docx, .pfd) and extract information from files securely with a clean, responsive UI. Built using Flask, HTML, and CSS, with organized project structure and deployment-ready requirements.txt
 
 ##  Features
 - File upload using `multipart/form-data`
